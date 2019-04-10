@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>展示系统</title>
+    <style>
+        .login_div{
+            margin: 0 auto;
+            /*margin-right: 200px;*/
+            width: 1210px;
+            height: 40px;
+            background: darkgrey;
+        }
+        .login_div>div{
+            float: right;
+            margin-top: 8px;
+        }
+        .login{
+            text-decoration: none;
+            margin-right: 8px;
+        }
+        .register{
+            text-decoration: none;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login_div">
+        <div>
+            {% if not cates.user %}
+                <a href="login" id="login" target="_blank" class="login">登录</a>
+                <a href="register" id="register" target="_blank" class="register">注册</a>
+            {% else %}
+                <a id="login">欢迎：{{cates.user.name}}</a>
+                <a href="mainwindow">进入氡气web展示</a>
+                <a href="logout" id="register" >退出</a>
+            {% endif %}
+                <a style="margin-right: 3px">关于版本号{{cates.virsion}}</a>
+        </div>
+    </div>
+</body>
+</html>

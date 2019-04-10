@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+function change()
+{
+   var x = document.getElementById("1");
+   var y = document.getElementById("2");
+   y.options.length = 0; // 清除second下拉框的所有内容
+   if(x.value == '53016')
+   {
+		y.options.add(new Option('5', "5", false, true));
+   }
+
+   if(x.value == '53079')
+   {
+		y.options.add(new Option("3", "3", false, true));
+   }
+
+}
+</script>
+</head>
+<body>
+{% for pa in cates.PATH %}
+<p> {{pa}}</p>
+{% endfor %}
+<form action="year" method="post">
+    <label>选择多年基站</label>
+    <select name="basestation" id="1" onchange="change()">
+    {% for sat in cates.station %}
+    <option value={{sat}}>{{sat}}</option>
+    {% endfor %}
+    </select>
+    <label>选择年份</label>
+    <select name="year">
+    {% for yea in cates.year %}
+    <option value={{yea}}>{{yea}}</option>
+    {% endfor %}
+    </select>
+        <label>选择数据年限类型</label>
+    <select name="dong_datatype">
+    {% for type in cates.dong_datatype %}
+    <option value={{type}}>{{type}}</option>
+    {% endfor %}
+    </select>
+        <label>选择device</label>
+    <select name="device" id="2">
+    {% for dev in cates.dong_device %}
+    <option value={{dev}}>{{dev}}</option>
+    {% endfor %}
+    </select>
+    <input type="submit" value="确定">
+</form>
+</body>
+</html>

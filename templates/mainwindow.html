@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0">
+    <title>气氡展示系统</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    {% block css %}
+    {% endblock %}
+    <script>
+        function nofind() {
+        var img = event.srcElement;
+        img.src = "https://www.baidu.com/img/bd_logo1.png";// 百度图片的地址
+        img.onerror = null;// 控制不要一直跳动
+        }
+        function return_error(){
+            var a = document.getElementById('value').innerHTML;
+            if(a == '您输入的基准值为0'){
+                document.getElementById('day').href = '/mainwindow';
+                alert('请设置基准值');
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <h1>气氡展示系统</h1>
+     <div style="text-align:center;clear:both">
+
+</div>
+    <!--menu begin-->
+      <nav>
+        <ul class="main">
+    <li>
+      <a href="/">网站首页</a>
+    </li>
+    <li><a href="#">设置基准值</a>
+      <ul class="drop menu2">
+        <li><a href="/value">地震目录距离</a></li>
+        <li><a href="set_outbase">异常分析基带</a></li>
+          <li><a href="/dongqi">设置数据类型</a></li>
+          <li><a href="/dongqi">查看近期查看过的记录</a></li>
+      </ul>
+    </li>
+    <li><a href="#">设置年份</a>
+      <ul class="drop menu3">
+          <li><a href="year">设置单年</a></li>
+          <li><a href="years">设置多年</a></li>
+          <li><a href="year">显示所选文件</a></li>
+      </ul>
+    </li>
+            <li><a href="#">单年分析</a>
+      <ul class="drop menu3">
+          <li><a id="day" href="/mainwindow/show?pictype=daydraw&type1=1" onclick="return_error()">日线图</a></li>
+          <li><a href="/mainwindow/show?pictype=origindraw&type1=1">原始图</a></li>
+          <li><a href="/mainwindow/show?pictype=monthdraw&type1=1">月线图</a></li>
+          <li><a href="/mainwindow/show?pictype='mouth_kdraw'& type1=1">月k线图</a></li>
+      </ul>
+    </li>
+            <li><a href="#">多年分析</a>
+      <ul class="drop menu3">
+          <li><a href="/mainwindow/show?pictype=origindraw&type1=2">原始图</a></li>
+          <li><a href="/mainwindow/show?pictype=monthdraw&type1=2">月线图</a></li>
+          <li><a href="/mainwindow/show?pictype=month_kdraw&type1=2">月k线图</a></li>
+      </ul>
+    </li>
+    <li><a href="#">用户管理</a>
+      <ul class="drop menu4">
+        <li><a href="#">查看用户信息</a></li>
+        <li><a href="#">news</a></li>
+        <li><a href="/log">查看ｌｏｇ信息</a></li>
+        <li><a href="">as</a></li>
+      </ul>
+    </li>
+    <li><a href="#">留言</a>
+      <ul class="drop menu5">
+        <li><a href="#">提交至我的邮箱</a></li>
+        <li><a href="#">news</a></li>
+        <li><a href="#">contact</a></li>
+        <li><a href="#">about</a></li>
+      </ul>
+    </li>
+    <li><a href="#">关于我</a>
+      <ul class="drop menu6">
+        <li><a href="#">我的学校</a></li>
+        <li><a href="https://www.cnblogs.com/xinin0909/">我的个人博客</a></li>
+        <li><a href="https://github.com/xinin0909">我的github</a></li>
+        <li><a href='javascript:alert("我的wechat号：xinin0909")'>我的微信</a></a></li>
+      </ul>
+    </li>
+  </ul>
+      </nav>
+    <p id="value"><font color="#0000FF">您输入的基准值为{{cates.simple_value}}</font></p>
+    <p id=""><font color="#0000FF">您要查看的数据类型{{cates.file_type}}</font></p>
+<img src="/images/save.png" alt="北京" title="北京" onerror="nofind();">
+</body>
+</html>

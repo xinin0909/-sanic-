@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function onlyNum(that){
+            that.value=that.value.replace(/\D/g,"");
+        }
+        function return0(that){
+            if(that.value==""){
+                that.value=0;
+            }
+        }
+        function selectAll(val){
+            $(val).select();
+        }
+    </script>
+</head>
+<body>
+<form  action="" method="post">
+    <li>设置基准值<input type="number" placeholder="请输入数字" name="simple_value" onkeyup="onlyNum(this)" onblur="return0(this)" onfocus="selectAll(this)"/></li>
+<li><input type='submit' value="确定"></li>
+</form>
+</body>
+</html>
